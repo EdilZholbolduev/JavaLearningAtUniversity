@@ -8,6 +8,8 @@ public class Main {
         int leftBlocks = brickNum % maxAmountOfContainer;
         int allContainers = containerFull + (leftBlocks > 0 ? 1 : 0);
 
+        System.out.println("Welcome to answer ");
+
         System.out.println("brick number " + brickNum);
         System.out.println("amount of container can capture " + maxAmountOfContainer);
         System.out.println("full containers " + containerFull);
