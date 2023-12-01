@@ -1,28 +1,27 @@
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) {
-        int[] array = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-
-        int minIndex = findMinimumIndex(array);
-
-        System.out.println("Array: " + Arrays.toString(array));
-        System.out.println("The minimum value is at index: " + minIndex);
-    }
-
-    private static int findMinimumIndex(int[] array) {
-        if (array == null || array.length == 0) {
-            throw new IllegalArgumentException("Array is null or empty");
-        }
-
-        int minIndex = 0;
-
-        for (int i = 1; i < array.length; i++) {
-            if (array[i] < array[minIndex]) {
-                minIndex = i;
+public class Main{
+    public static void main(String[] args){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader("studentSEN.txt"));
+            FileWriter fw = new FileWriter("studentSENwith5")){
+        String line;
+        while((line = bufferedReader.readLine()) !=null){
+            String[] words = line.split("\\s");
+            String surname = words[0].trim();
+            String name = words[1].trim();
+            String score = words[2].trim();
+            if(score.equals("5")){
+                fw.write(surname + "\s" + name + "\s" + score + "\n");
             }
+
         }
 
-        return minIndex;
+        }catch (IOException e){
+            System.out.println("Error IO");
+        }
+
     }
 }
